@@ -1,6 +1,7 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
+import cors from 'cors';
 import connectToDatabase from './db';
 import taskRouter from './routes/taskRouter';
 import { MONGODB_URI } from './config';
@@ -8,9 +9,13 @@ import { MONGODB_URI } from './config';
 console.log("MongoDB URI:", MONGODB_URI);
 connectToDatabase();
 const app = express();
+app.use(cors({
+  origin: process.env.FRONTEND_URL,
+  credentials: true,
+}))
 app.use(express.json());
 app.use(cookieParser());
-app.use("/api/tasks",taskRouter);
+app.use("/tasks",taskRouter);
 
 
 
