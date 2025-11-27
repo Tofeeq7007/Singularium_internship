@@ -1,24 +1,24 @@
 import axios from "axios";
 import type { CreateTaskInput, Task } from "../types";
+import { API_BASE } from "../config";
+console.log("API_BASE in taskServices:", API_BASE);
 
-const API_URL =  import.meta.env.BACKEND_URL; // Your backend URL
-console.log("API URL:", API_URL);
 export const getAllTasks = async (): Promise<Task[]> => {
-  const res = await axios.get(API_URL);
+  const res = await axios.get(API_BASE);
   return res.data;
 };
 
 export const getSortedTasks = async (): Promise<Task[]> => {
-  const res = await axios.get(`${API_URL}/sorted/highest`);
+  const res = await axios.get(`${API_BASE}/sorted/highest`);
   return res.data;
 };
 
 export const createTask = async (task: CreateTaskInput): Promise<Task> => {
-  const res = await axios.post(API_URL, task);
+  const res = await axios.post(API_BASE, task);
   return res.data.task;
 };
 
 export const getTaskById = async (id: string): Promise<Task> => {
-  const res = await axios.get(`${API_URL}/${id}`);
+  const res = await axios.get(`${API_BASE}/${id}`);
   return res.data;
 };

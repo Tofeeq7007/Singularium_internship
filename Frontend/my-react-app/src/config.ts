@@ -1,0 +1,1 @@
+export const API_BASE = import.meta.env.BACKEND_URL as string;
