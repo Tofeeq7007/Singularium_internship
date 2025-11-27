@@ -2,6 +2,7 @@ import type { CreateTaskInput } from "../types";
 
 const API_BASE = import.meta.env.BACKEND_URL;
 
+console.log("API_BASE:", API_BASE);
 export const taskService = {
   createTask: async (task: CreateTaskInput) => {
     const response = await fetch(`${API_BASE}/tasks`, {
@@ -14,6 +15,7 @@ export const taskService = {
   },
 
   getAllTasks: async () => {
+    
     const response = await fetch(`${API_BASE}/tasks`);
     if (!response.ok) throw new Error('Failed to fetch tasks');
     return response.json();

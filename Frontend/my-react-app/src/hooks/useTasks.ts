@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import { taskService } from '../services/taskService';
 import type { CreateTaskInput, Task } from '../types';
+import { taskService } from '../services/taskServices';
 
 export const useTasks = (sortBy: 'score' | 'deadline' | 'all') => {
   const [tasks, setTasks] = useState<Task[]>([]);
