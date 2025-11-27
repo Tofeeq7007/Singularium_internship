@@ -1,7 +1,7 @@
 import axios from "axios";
 import type { CreateTaskInput, Task } from "../types";
 
-const API_URL =  import.meta.env.BACKEND_URL || "http://localhost:3000/tasks"; // Your backend URL
+const API_URL =  import.meta.env.BACKEND_URL; // Your backend URL
 
 export const getAllTasks = async (): Promise<Task[]> => {
   const res = await axios.get(API_URL);
