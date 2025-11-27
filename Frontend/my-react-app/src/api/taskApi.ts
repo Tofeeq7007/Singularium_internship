@@ -1,7 +1,7 @@
 import axios from "axios";
-import type { CreateInput, Task } from "../types/taskType";
+import type { CreateTaskInput, Task } from "../types";
 
-const API_URL = "http://localhost:5000/tasks"; // Your backend URL
+const API_URL =  import.meta.env.BACKEND_URL || "http://localhost:3000/tasks"; // Your backend URL
 
 export const getAllTasks = async (): Promise<Task[]> => {
   const res = await axios.get(API_URL);
@@ -13,7 +13,7 @@ export const getSortedTasks = async (): Promise<Task[]> => {
   return res.data;
 };
 
-export const createTask = async (task: CreateInput): Promise<Task> => {
+export const createTask = async (task: CreateTaskInput): Promise<Task> => {
   const res = await axios.post(API_URL, task);
   return res.data.task;
 };
