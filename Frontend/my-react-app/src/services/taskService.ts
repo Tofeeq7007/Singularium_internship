@@ -1,6 +1,6 @@
 import type { CreateTaskInput } from "../types";
 
-const API_BASE = import.meta.env.REACT_APP_API_URL || 'http://localhost:3000';
+const API_BASE = import.meta.env.BACKEND_URL;
 
 export const taskService = {
   createTask: async (task: CreateTaskInput) => {
